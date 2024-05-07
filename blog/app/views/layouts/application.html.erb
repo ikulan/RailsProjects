@@ -12,8 +12,19 @@
   </head>
 
   <body class="prose mx-auto mt-28 px-5">
-    <!-- <main class="container mx-auto mt-28 px-5"> -->
-      <%= yield %>
-    <!-- </main> -->
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <div>
+      <% if user_signed_in? %>
+        <%= link_to "Profile", edit_user_registration_path %>
+        <%= button_to "Log out", destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to "Log in", new_user_session_path %>
+      <% end %>
+    </div>
+    
+    <%= yield %>
+    
   </body>
 </html>
