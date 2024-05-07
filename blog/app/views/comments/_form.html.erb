@@ -12,6 +12,6 @@
     <%= form.select :status, Visible::VALID_STATUSES, selected: 'public' %>
   </p>
   <p>
-    <%= form.submit %>
+    <%= form.submit "Add", class: "btn-primary" %>
   </p>
 <% end %>

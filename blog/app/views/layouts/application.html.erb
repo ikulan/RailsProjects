@@ -12,13 +12,12 @@
   </head>
 
   <body class="prose mx-auto mt-28 px-5">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
-    <div>
+    <p class="notice bg-orange-200"><%= notice %></p>
+    <p class="alert bg-orange-200"><%= alert %></p>
+    
+    <div class="grid py-4 justify-items-end">
       <% if user_signed_in? %>
-        <%= link_to "Profile", edit_user_registration_path %>
-        <%= button_to "Log out", destroy_user_session_path, method: :delete %>
+        <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "underline font-semibold" %>
       <% else %>
         <%= link_to "Log in", new_user_session_path %>
       <% end %>
