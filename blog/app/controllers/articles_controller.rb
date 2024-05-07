@@ -2,11 +2,13 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @articles = Article.all
+    @articles = user_signed_in? ? Article.all.sorted : Article.published.sorted
   end
 
   def show
-    @article = Article.find(params[:id])
+    @article = user_signed_in? ? Article.find(params[:id]) : Article.published.find(params[:id])
+  rescue
+    redirect_to root_path
   end
 
   def new
@@ -47,6 +49,6 @@ class ArticlesController < ApplicationController
   private
     # parameter filtering
     def article_params
-      params.require(:article).permit(:title, :body, :status)
+      params.require(:article).permit(:title, :body, :status, :published_at)
     end  
 end
