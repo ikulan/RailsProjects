@@ -7,3 +7,18 @@ one:
 two:
   title: MyString
   body: MyText
+
+draft:
+  title: Draft Post
+  body: this is a draft post for test
+  published_at: null
+
+published:
+  title: Published Post
+  body: this is a published post for test
+  published_at: <%= 1.year.ago %>
+
+scheduled:
+  title: Scheduled Post
+  body: this is a scheduled post for test
+  published_at: <%= 1.year.from_now %>
