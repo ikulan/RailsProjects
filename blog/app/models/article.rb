@@ -1,10 +1,11 @@
 class Article < ApplicationRecord
   include Visible
 
+  has_rich_text :content
   has_many :comments, dependent: :destroy
 
   validates :title, presence: true
-  validates :body, presence: true, length: { minimum: 10 }
+  validates :content, presence: true
 
   scope :sorted, -> { order(published_at: :desc) }
   scope :draft, -> { where(published_at: nil) }

@@ -5,6 +5,7 @@ This project aims to familiarize myself with the latest features of Rails 7 and 
 - Beautification using [Tailwind CSS](https://github.com/rails/tailwindcss-rails)
 - Authentication using [Devise](https://github.com/heartcombo/devise)
 - Switching database from sqlite3 to PostgreSQL
+- Support rich text using Action Text
 
 ## Development
 
