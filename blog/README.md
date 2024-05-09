@@ -6,7 +6,7 @@ This project aims to familiarize myself with the latest features of Rails 7 and 
 - Authentication using [Devise](https://github.com/heartcombo/devise)
 - Switching database from sqlite3 to PostgreSQL
 - Support rich text using [Action Text](https://guides.rubyonrails.org/action_text_overview.html)
-- Support uploading files into Amazon S3 through [Active Storage] (https://guides.rubyonrails.org/active_storage_overview.html)
+- Support uploading files into Amazon S3 through [Active Storage](https://guides.rubyonrails.org/active_storage_overview.html)
 
 ## Development
 
@@ -20,16 +20,27 @@ brew services start postgresql
 ```
 
 - install dependencies
-  `bundle install`
+
+```
+bundle install
+```
 
 - set up the database tables for the app
-  `./bin/dev rails db:migrate`
+
+```
+./bin/dev rails db:migrate
+```
 
 ### Run the dev server:
 
-`./bin/dev`
+```
+./bin/dev
+```
+
 This will bring on the dev server for Rails and a watcher for Tailwind CSS.
 
 ### Run console:
 
-`./bin/console`
+```
+./bin/console
+```
