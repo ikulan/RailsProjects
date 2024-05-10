@@ -4,6 +4,7 @@ This project aims to build a password manager app which can securely store encry
 
 - Create a many-to-many data model to allow password sharing feature.
 - Utilize Active Record Encryption to encrypt specified db fields.
+- Add front-end interactive features using Stimulus.js.
 
 ## Dependencies
 
