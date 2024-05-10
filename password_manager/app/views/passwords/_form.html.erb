@@ -16,10 +16,10 @@
   </div>
   <div>
     <%= form.label :password %>
-    <%= form.password_field :password %>
+    <%= form.text_field :password %>
   </div>
   <div>
-    <%= form.submit %>
+    <%= form.submit "Submit", class: "btn-primary" %>
     <% if !password.new_record? %>
       <%= button_tag "Delete", form: "delete_password", class: "btn-primary"  %>
     <% end %>
