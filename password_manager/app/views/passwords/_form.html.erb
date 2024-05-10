@@ -20,5 +20,12 @@
   </div>
   <div>
     <%= form.submit %>
+    <% if !password.new_record? %>
+      <%= button_tag "Delete", form: "delete_password", class: "btn-primary"  %>
+    <% end %>
   </div>
+<% end %>
+
+<% if !password.new_record? %>
+  <%= form_with model: password, method: :delete, id: :delete_password, data: {turbo_confirm: "Are you sure?"} %>
 <% end %>
