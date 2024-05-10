@@ -1,4 +1,5 @@
-<div class="flex justify-between items-center">
+<%= link_to "← Back", root_path, class: "block mb-4 no-underline text-blue-600" %>
+<div class="flex justfy-between items-center">
   <h1>
     <%= @password.url %>
     <%= link_to @password.url, target: :_blank do %>
@@ -10,6 +11,7 @@
   <%= link_to "Edit", edit_password_path %>
 </div>
 
+<h4>Credentials</h4>
 <h6>Username / Email</h6>
 <div class="flex items-center gap-1">
   <pre class="my-0 flex-grow"><code></code><%= @password.username %></pre>
@@ -31,4 +33,21 @@
       clipboard_content_value: @password.password
     } 
   %>
+</div>
+
+<h4>Share</h4>
+<%= link_to "Add a user", new_password_shares_path(@password) %>
+<div class="flex flex-col gap-1 divide-y divide-gray-200">
+  <% @password.users.excluding(current_user).each do |user| %>
+    <div class="flex justify-between items-center">
+      <div><%= user.email %></div>
+      <%= button_to "Remove", 
+            password_shares_path(@password), 
+            method: :delete, 
+            params: {user_id: user},
+            data: {turbo_confirm: "Are you sure?" },
+            class: "px-2 py-1 bg-gray-200 rounded" 
+      %>
+    </div>
+  <% end %>
 </div>
