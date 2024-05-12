@@ -1,9 +1,9 @@
 class SharesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_password
+  before_action :require_owner_permissions
 
   def new
-    @users = User.excluding(@password.users)
     @user_password = UserPassword.new
   end
 
@@ -17,7 +17,7 @@ class SharesController < ApplicationController
     if @user_password.save
       redirect_to @password
     else
-        render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -29,5 +29,9 @@ class SharesController < ApplicationController
 
   def set_password
     @password = current_user.passwords.find(params[:password_id])
+  end
+
+  def require_owner_permissions
+    redirect_to @password unless @password.is_owner?(current_user)
   end
 end

@@ -5,5 +5,19 @@ class Password < ApplicationRecord
   encrypts :username, deterministic: true  # so this field is queryable
   encrypts :password
 
+  validates :url, presence: true
   validates :username, presence: true
+  validates :password, presence: true
+
+  def shareable_users
+    User.excluding(users)
+  end
+
+  def editable_by?(user)
+    user_passwords.find_by(user: user)&.editable?
+  end
+
+  def is_owner?(user)
+    user_passwords.find_by(user: user)&.owner?
+  end
 end

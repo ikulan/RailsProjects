@@ -8,7 +8,9 @@
       </svg>
     <% end %>
   </h1>
-  <%= link_to "Edit", edit_password_path %>
+  <% if @password.editable_by?(current_user) %>
+    <%= link_to "Edit", edit_password_path %>
+  <% end %>
 </div>
 
 <h4>Credentials</h4>
@@ -35,19 +37,28 @@
   %>
 </div>
 
-<h4>Share</h4>
-<%= link_to "Add a user", new_password_shares_path(@password) %>
+<div class="mb-4 mt-8 flex justify-between items-center">
+  <h4>Shared With</h4>
+  <% if @password.is_owner?(current_user) %>
+    <%= link_to "Add a user", new_password_shares_path(@password) %>
+  <% end %>
+</div>
 <div class="flex flex-col gap-1 divide-y divide-gray-200">
-  <% @password.users.excluding(current_user).each do |user| %>
-    <div class="flex justify-between items-center">
-      <div><%= user.email %></div>
-      <%= button_to "Remove", 
+  <% @password.user_passwords.each do |up| %>
+    <div class="grid grid-cols-3 justify-between items-center">
+      <div><%= up.user.email %></div>
+      <div class="text-right"><%= up.role.titleize %></div>
+      <div class="text-right">
+      <% if @password.is_owner?(current_user) && !up.owner? %>
+        <%= button_to "Remove", 
             password_shares_path(@password), 
             method: :delete, 
-            params: {user_id: user},
+            params: {user_id: up.user},
             data: {turbo_confirm: "Are you sure?" },
             class: "px-2 py-1 bg-gray-200 rounded" 
-      %>
+        %>
+      <% end %>
+      </div>
     </div>
   <% end %>
 </div>

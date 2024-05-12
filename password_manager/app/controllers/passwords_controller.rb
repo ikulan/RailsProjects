@@ -1,6 +1,7 @@
 class PasswordsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_password, except: [:index, :new, :create]
+  before_action :require_owner_permissions, only: [:edit, :update, :destroy]
 
   def index
     @passwords = current_user.passwords
@@ -14,9 +15,9 @@ class PasswordsController < ApplicationController
   end
 
   def create
-    # use create method instead of new method, so the join table would be saved in the same time
-    @password = current_user.passwords.create(password_params)
-    if @password.persisted?
+    @password = Password.new(password_params)
+    @password.user_passwords.new(user: current_user, role: :owner)
+    if @password.save
       redirect_to @password
     else
       render :new, status: :unprocessable_entity
@@ -46,7 +47,10 @@ class PasswordsController < ApplicationController
   end
 
   def set_password
-    @password = current_user.passwords.find(params[:id])
+    @password = current_user.passwords.find(params[:id]) or not_found!
   end
 
+  def require_owner_permissions
+    redirect_to @password unless @password.is_owner?(current_user)
+  end
 end
