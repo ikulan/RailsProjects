@@ -12,4 +12,11 @@ This project aims to familiarize myself with the latest features of Rails 7 and 
 
 ## 2. [Password Manager](password_manager/)
 
-To build an app that can securely store encrypted usernames and passwords. This app also allows users to share passwords to other users that they want to share with. 
+This project aims to build a password manager app which can securely store encrypted usernames and passwords. This app also allows users to share passwords to other users that they want to share with.
+
+- Create a many-to-many data model through join table to enable the password sharing feature.
+- Utilize Active Record Encryption to encrypt specified db fields.
+- Add front-end interactive features using Stimulus.js.
+
+https://password-manager-pliu.fly.dev/
+
