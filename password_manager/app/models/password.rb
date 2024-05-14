@@ -1,4 +1,6 @@
 class Password < ApplicationRecord
+  before_create :randomize_id
+
   has_many :user_passwords, dependent: :destroy
   has_many :users, through: :user_passwords
 
@@ -19,5 +21,12 @@ class Password < ApplicationRecord
 
   def is_owner?(user)
     user_passwords.find_by(user: user)&.owner?
+  end
+
+  private
+  def randomize_id
+    begin
+      self.id = SecureRandom.random_number(100_000_000)
+    end while Password.where(id: self.id).exists?
   end
 end
