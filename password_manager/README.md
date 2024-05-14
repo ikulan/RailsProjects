@@ -2,7 +2,7 @@
 
 This project aims to build a password manager app which can securely store encrypted usernames and passwords. This app also allows users to share passwords to other users that they want to share with.
 
-- Create a many-to-many data model to allow password sharing feature.
+- Create a many-to-many data model through join table to allow password sharing feature.
 - Utilize Active Record Encryption to encrypt specified db fields.
 - Add front-end interactive features using Stimulus.js.
 
