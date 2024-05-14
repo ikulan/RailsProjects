@@ -1,8 +1,10 @@
 <%= link_to "← Back", password_path(@password), class: "block mb-4 no-underline text-blue-600" %>
 
-<h1>Share Password</h1>
+<div class="mx-auto w-fit">
+  <h1>Share Password</h1>
 
-<%= render "form",
-  password: @password,
-  user_password: @user_password
-%>
+  <%= render "form",
+    password: @password,
+    user_password: @user_password
+  %>
+</div>

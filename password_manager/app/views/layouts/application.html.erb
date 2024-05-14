@@ -12,11 +12,13 @@
   </head>
 
   <body>
-    <main class="container mx-auto">
-      <div class="prose max-w-none px-5">
+    <main>
+      <div class="prose max-w-none">
         <%= render "shared/nav" %>
         <%= render "shared/flash" %>
-        <%= yield %>
+        <div class="max-w-screen-md mx-auto">
+          <%= yield %>
+        </div>
       </div>
     </main>
   </body>
