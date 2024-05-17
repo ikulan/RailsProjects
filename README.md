@@ -20,3 +20,6 @@ This project aims to build a password manager app which can securely store encry
 
 https://password-manager-pliu.fly.dev/
 
+## 3. [URL Shortener](url_shortener/)
+
+This project aims to build a url shortener web app. Users can get a shortened url and track the views of the url.
