@@ -1,1 +1,16 @@
-<h1>Links</h1>
+<div class="flex justify-center mx-auto">
+  <h1 class="text-green-900">URL Shortener</h1>
+</div>
+
+<%= form_with model: Link.new do |form| %>
+  <div class="flex gap-2 items-center">
+    <%= form.url_field :url, 
+          placeholder: "https://example.org", 
+          required: true, 
+          class: "flex-grow rounded placeholder:text-slate-400 focus:border-green-600 focus:ring-green-600 " 
+    %>
+    <%= form.button "Shorten URL", class: "btn-primary" %>
+  </div>
+<% end %>
+
+<%= render @links%>
