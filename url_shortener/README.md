@@ -3,7 +3,7 @@
 ## Requirements
 
 - After a user submitting a url,
-  - a short code (`:id`) of the url will be generated using Base64 encoding
+  - a short code (`:id`) of the url will be generated using Base62 encoding
   - The url entry is stored into the database, along with the short code, title, description, and the opengraph image for the HTML document (background jobs)
 - When visiting `/v/:id`,
   - redirecting the client to the URL
