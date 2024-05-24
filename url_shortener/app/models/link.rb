@@ -5,6 +5,14 @@ class Link < ApplicationRecord
   
   validates :url, presence: true
 
+  def self.find(id)
+    super Base62.decode(id)
+  end
+
+  def to_param
+    Base62.encode(id)
+  end
+
   private
   def randomize_id
     begin
