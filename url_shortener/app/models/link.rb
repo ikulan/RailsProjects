@@ -15,6 +15,10 @@ class Link < ApplicationRecord
     Base62.encode(id)
   end
 
+  def domain
+    URI(url).host rescue URI::InvalidURIError
+  end
+
   private
   def randomize_id
     begin
