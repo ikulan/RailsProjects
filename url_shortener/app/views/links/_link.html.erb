@@ -17,6 +17,7 @@
   </div>
   <div class="flex py-1 gap-2 items-center text-gray-400">
     <%= favicon_image_tag link.domain, class: "inline-block my-0" %>
-    <%= link.url %>
+    <%= link.title || link.url %>
   </div>
+  <%= tag.div link.description, class: "text-xs text-gray-700" %>
 <% end %>
