@@ -1,4 +1,5 @@
 <%= tag.div id: dom_id(link), class: "p-4 even:bg-green-50" do %>
+  <%= turbo_stream_from link %>
   <div class="grid grid-cols-8 items-center">
     <div class="col-span-5">
       <%= link_to view_path(link), target: :_blank, data: {turbo: false}, class: "no-underline" do %>
