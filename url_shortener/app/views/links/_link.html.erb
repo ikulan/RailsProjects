@@ -11,7 +11,10 @@
       <%= link_to pluralize(link.views_count, "view"), link, class: "px-3 py-2 rounded bg-gray-100 no-underline" %>
     </div>
     <div class="text-center text-sm">
-      <%= link_to "Copy", link, class: "px-3 py-2 rounded bg-gray-100 no-underline" %>
+      <%= button_tag "Copy", class: "no-underline px-3 py-2 rounded bg-gray-100", 
+          data: {controller: "clipboard", clipboard_text: view_url(link)} do %>
+        <%= render "shared/svg/copy" %>
+      <% end %>
     </div>
   </div>
   <div class="flex py-1 gap-2 items-center text-gray-400">

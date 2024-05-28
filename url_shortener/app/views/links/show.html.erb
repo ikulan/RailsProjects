@@ -3,6 +3,10 @@
   <div class="flex items-center gap-4">
     <%= tag.div pluralize(@link.views_count, "view") %>
     <%= link_to "Edit", edit_link_path(@link), class: "no-underline text-sm px-3 py-2 rounded bg-gray-100" %>
+    <%= button_tag "Copy", class: "no-underline text-sm px-3 py-2 rounded bg-gray-100", 
+          data: {controller: "clipboard", clipboard_text: view_url(@link)} do %>
+      <%= render "shared/svg/copy" %>
+    <% end %>
   </div>
 </div>
 
