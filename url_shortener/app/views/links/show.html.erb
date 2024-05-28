@@ -6,8 +6,13 @@
   </div>
 </div>
 
-<h1 class="mt-4"><%= @link.url %></h1>
-<%= @link.description %>
+<h1 class="mt-4"><%= @link.title || @link.url %></h1>
+<%= tag.div @link.description %>
+<%= link_to view_path(@link), target: :_blank, data: {turbo: false}, class: "no-underline p-2 bg-gray-100 items-center" do %>
+  <%= favicon_image_tag @link.domain, class: "inline-block" %>
+  <%= truncate @link.url %>
+  <%= render "shared/svg/external" %>
+<% end %>
 
 <%= line_chart @link.views.group_by_day(
         :created_at, 
